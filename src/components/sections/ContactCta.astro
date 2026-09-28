@@ -1,5 +1,4 @@
 ---
-import company from "../../data/company.json";
 import Button from "../ui/Button.astro";
 import Container from "../ui/Container.astro";
 ---
@@ -14,8 +13,7 @@ import Container from "../ui/Container.astro";
         <p class="mt-5 text-lg text-white/75">请通过公开邮箱发送项目地点、建设需求、用地条件和联系方式，我们会尽快回复。</p>
       </div>
       <div class="relative mt-8 flex shrink-0 flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-col">
-        <Button href={`mailto:${company.email}`} variant="custom" class="bg-white text-[var(--color-primary)] hover:bg-[var(--color-accent)]">发送邮件</Button>
-        <Button href="/contact/" variant="custom" class="border border-white/25 bg-white/10 text-white hover:border-white">联系方式</Button>
+        <Button href="/contact/" variant="custom" class="bg-white text-[var(--color-primary)] hover:bg-[var(--color-accent)]">前往联系询盘</Button>
       </div>
     </div>
   </Container>
