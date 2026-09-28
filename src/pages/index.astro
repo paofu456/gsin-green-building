@@ -1,0 +1,35 @@
+---
+import CompanyIntro from "../components/sections/CompanyIntro.astro";
+import ContactCta from "../components/sections/ContactCta.astro";
+import FeaturedProducts from "../components/sections/FeaturedProducts.astro";
+import Hero from "../components/sections/Hero.astro";
+import Container from "../components/ui/Container.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { makePageTitle } from "../lib/seo";
+---
+
+<BaseLayout
+  title={makePageTitle()}
+  description="深圳金鑫绿建股份有限公司成立于1998年，专注钢结构专业承包、装配式钢结构建筑总承包、超高层建筑、大跨度空间钢结构建筑和绿色乡墅产品。"
+  image="/media/projects/bay-park-center.jpg"
+>
+  <Hero />
+  <section class="border-b border-[var(--color-line)] bg-white py-16">
+    <Container class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        { label: "成立年份", value: "1998年" },
+        { label: "超高层项目", value: "72个" },
+        { label: "大跨度项目", value: "62个" },
+        { label: "装配式项目", value: "12个" },
+      ].map((item) => (
+        <div class="rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6">
+          <p class="text-sm font-bold text-[var(--color-muted)]">{item.label}</p>
+          <p class="mt-3 text-3xl font-black text-[var(--color-primary)]">{item.value}</p>
+        </div>
+      ))}
+    </Container>
+  </section>
+  <CompanyIntro />
+  <FeaturedProducts />
+  <ContactCta />
+</BaseLayout>

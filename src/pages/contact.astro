@@ -1,0 +1,35 @@
+---
+import Container from "../components/ui/Container.astro";
+import company from "../data/company.json";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { makePageTitle } from "../lib/seo";
+---
+
+<BaseLayout
+  title={makePageTitle("联系询盘")}
+  description="通过公开邮箱咨询金鑫绿建钢结构工程、装配式建筑和乡墅产品合作。请提供项目地点、建设需求、用地条件和联系方式。"
+>
+  <section class="border-b border-[var(--color-line)] bg-white py-20 sm:py-28">
+    <Container>
+      <p class="eyebrow mb-5">联系询盘</p>
+      <h1 class="max-w-4xl text-5xl font-extrabold leading-[1.05] sm:text-7xl">用一封邮件说明项目需求。</h1>
+      <p class="mt-7 max-w-2xl text-xl leading-9 text-[var(--color-muted)]">为便于更快判断项目条件，建议在邮件中说明项目地点、建设规模、用地或场地条件、功能需求、预算范围和期望周期。</p>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <Container class="grid gap-6 lg:grid-cols-[1.1fr_.9fr]">
+      <a href={`mailto:${company.email}?subject=${encodeURIComponent("项目咨询-金鑫绿建")}`} class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white p-8 transition hover:-translate-y-1 hover:shadow-[var(--shadow-card)] sm:p-10">
+        <p class="eyebrow">公开邮箱</p>
+        <h2 class="mt-4 text-3xl font-extrabold">发送项目咨询</h2>
+        <p class="mt-4 break-all text-lg text-[var(--color-muted)]">{company.email}</p>
+        <span class="mt-8 inline-flex min-h-12 items-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-bold text-white">立即写信</span>
+      </a>
+      <div class="rounded-[var(--radius-card)] bg-[var(--color-ink)] p-8 text-white sm:p-10">
+        <p class="text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--color-accent)]">公司所在地</p>
+        <h2 class="mt-4 text-3xl font-extrabold">{company.location}</h2>
+        <p class="mt-4 text-white/70">具体街道地址、拜访安排和现场考察可在邮件沟通后确认。</p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

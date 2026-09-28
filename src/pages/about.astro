@@ -1,0 +1,72 @@
+---
+import ContactCta from "../components/sections/ContactCta.astro";
+import Container from "../components/ui/Container.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import company from "../data/company.json";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { makePageTitle } from "../lib/seo";
+---
+
+<BaseLayout
+  title={makePageTitle("公司实力")}
+  description="金鑫绿建成立于1998年，是国家级高新技术企业，拥有钢结构工程专业承包壹级等资质，并多次获得国家优质工程奖和中国建筑钢结构金奖。"
+>
+  <section class="border-b border-[var(--color-line)] bg-white py-20 sm:py-28">
+    <Container>
+      <p class="eyebrow mb-5">ABOUT GSIN</p>
+      <h1 class="max-w-5xl text-5xl font-extrabold leading-[1.05] sm:text-7xl">以工程业绩和资质体系支撑长期交付。</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-[var(--color-muted)]">{company.description}</p>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <Container class="grid items-start gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
+      <img src="/media/projects/highrise-tower.jpg" alt="金鑫绿建参与建设的超高层钢结构建筑" width="744" height="825" loading="lazy" class="w-full rounded-[var(--radius-card)] object-cover shadow-[var(--shadow-card)]" />
+      <div>
+        <SectionHeading eyebrow="发展路径" title="从钢结构专业承包到绿色建筑产品。" description="画册记载公司经历了钢结构专业承包、EPC钢结构装配式建筑总承包，以及钢结构装配式绿色建筑产品三个发展阶段。" />
+        <dl class="mt-10 grid gap-5 sm:grid-cols-2">
+          {[
+            { label: "成立时间", value: company.founded },
+            { label: "公司所在地", value: company.location },
+            { label: "证券代码", value: "839696" },
+            { label: "挂牌时间", value: "2016年11月" },
+          ].map((item) => (
+            <div class="rounded-2xl border border-[var(--color-line)] bg-white p-6">
+              <dt class="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-muted)]">{item.label}</dt>
+              <dd class="mt-2 text-lg font-extrabold text-[var(--color-ink)]">{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </Container>
+  </section>
+
+  <section class="border-y border-[var(--color-line)] bg-white py-20 sm:py-28">
+    <Container>
+      <SectionHeading eyebrow="资质与荣誉" title="工程能力有可核验的行业记录。" description="以下资质、奖项和产业基地信息来自公司画册，可用于合作前的基本能力判断。" />
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        <article class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-surface)] p-8">
+          <h2 class="text-2xl font-extrabold">资质</h2>
+          <ul class="mt-6 space-y-3 text-[var(--color-muted)]">
+            <li>钢结构工程专业承包壹级资质</li>
+            <li>中国钢结构制造企业壹级资质</li>
+            <li>建筑工程施工总承包贰级资质</li>
+            <li>古建筑专业承包贰级资质</li>
+          </ul>
+        </article>
+        <article class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-surface)] p-8">
+          <h2 class="text-2xl font-extrabold">荣誉</h2>
+          <ul class="mt-6 space-y-3 text-[var(--color-muted)]">
+            <li>2次国家优质工程奖</li>
+            <li>15次中国建筑钢结构金奖</li>
+            <li>国家级装配式建筑产业基地</li>
+            <li>广东省工程技术研究中心</li>
+            <li>中国建筑金属结构协会信用企业（3A）</li>
+          </ul>
+        </article>
+      </div>
+    </Container>
+  </section>
+
+  <ContactCta />
+</BaseLayout>

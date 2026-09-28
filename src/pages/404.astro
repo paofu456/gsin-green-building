@@ -1,0 +1,24 @@
+---
+import Button from "../components/ui/Button.astro";
+import Container from "../components/ui/Container.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { makePageTitle } from "../lib/seo";
+---
+
+<BaseLayout
+  title={makePageTitle("页面未找到")}
+  description="访问的页面不存在或地址已变更。可返回金鑫绿建首页，或查看钢结构工程、装配式建筑和乡墅产品业务。"
+  noindex={true}
+>
+  <section class="py-28 sm:py-40">
+    <Container class="text-center">
+      <p class="text-8xl font-black text-[var(--color-primary)] sm:text-9xl">404</p>
+      <h1 class="mt-6 text-4xl font-extrabold sm:text-6xl">页面未找到</h1>
+      <p class="mx-auto mt-5 max-w-xl text-lg text-[var(--color-muted)]">链接可能已变更，或内容暂时不可用。</p>
+      <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+        <Button href="/">返回首页</Button>
+        <Button href="/products/" variant="secondary">查看业务体系</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

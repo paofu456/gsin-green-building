@@ -1,0 +1,30 @@
+---
+import company from "../../data/company.json";
+import Button from "../ui/Button.astro";
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="py-24 sm:py-32">
+  <Container class="grid items-start gap-12 lg:grid-cols-[1fr_.85fr] lg:gap-20">
+    <SectionHeading
+      eyebrow="关于金鑫绿建"
+      title="以钢结构专业承包与装配式建筑总承包为双主线。"
+      description="公司成立于1998年，围绕超高层钢结构、大跨度空间钢结构、装配式钢结构建筑和绿色乡墅产品持续开展工程实践。"
+    />
+    <div class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white p-8 shadow-[var(--shadow-card)] sm:p-10">
+      <p class="text-lg leading-8 text-[var(--color-muted)]">{company.description}</p>
+      <dl class="mt-8 grid grid-cols-2 gap-6 border-t border-[var(--color-line)] pt-8">
+        <div>
+          <dt class="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-muted)]">成立时间</dt>
+          <dd class="mt-2 font-extrabold text-[var(--color-ink)]">{company.founded}</dd>
+        </div>
+        <div>
+          <dt class="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-muted)]">所在地</dt>
+          <dd class="mt-2 font-extrabold text-[var(--color-ink)]">{company.location}</dd>
+        </div>
+      </dl>
+      <Button href="/about/" variant="text" class="mt-7 px-0">查看公司实力 →</Button>
+    </div>
+  </Container>
+</section>

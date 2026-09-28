@@ -1,0 +1,62 @@
+---
+import ContactCta from "../components/sections/ContactCta.astro";
+import Container from "../components/ui/Container.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { makePageTitle } from "../lib/seo";
+---
+
+<BaseLayout
+  title={makePageTitle("项目案例")}
+  description="查看金鑫绿建画册中的代表性项目，包括深湾汇云中心、深圳湾壹号、库马克大厦、上海力波啤酒厂转型项目和第三高科技预制学校。"
+>
+  <section class="border-b border-[var(--color-line)] bg-white py-20 sm:py-28">
+    <Container>
+      <p class="eyebrow mb-5">项目案例</p>
+      <h1 class="max-w-5xl text-5xl font-extrabold leading-[1.05] sm:text-7xl">代表性项目覆盖不同建筑类型。</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-[var(--color-muted)]">以下案例来自公司画册，按超高层钢结构、装配式钢结构建筑和公共配套设施分类展示。完整项目数量和详细信息以画册及项目合同资料为准。</p>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <Container>
+      <SectionHeading eyebrow="钢结构专业承包" title="超高层与大跨度空间钢结构。" />
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        {[
+          { name: "深湾汇云中心", city: "中国深圳", facts: ["建筑面积208028平方米", "建筑高度358.7米", "用钢量39548吨"] },
+          { name: "深圳湾壹号", city: "中国深圳", facts: ["建筑面积173225平方米", "建筑高度341米", "用钢量33450吨"] },
+          { name: "深圳世茂广场（二期）", city: "中国深圳", facts: ["建筑面积240904平方米", "建筑高度303米", "用钢量8100吨"] },
+        ].map((project) => (
+          <article class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white p-7">
+            <p class="text-sm font-bold text-[var(--color-muted)]">{project.city}</p>
+            <h3 class="mt-3 text-2xl font-extrabold">{project.name}</h3>
+            <ul class="mt-5 space-y-2 text-sm text-[var(--color-muted)]">{project.facts.map((fact) => <li>{fact}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="border-y border-[var(--color-line)] bg-white py-20 sm:py-28">
+    <Container>
+      <SectionHeading eyebrow="装配式建筑" title="住宅、学校与城市更新项目。" />
+      <div class="mt-12 grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
+        <img src="/media/projects/cumark-tower.jpg" alt="库马克大厦装配式钢结构建筑项目" width="1466" height="1100" loading="lazy" class="w-full rounded-[var(--radius-card)] object-cover shadow-[var(--shadow-card)]" />
+        <div class="grid gap-6">
+          {[
+            { name: "库马克大厦", facts: ["建筑面积38697平方米", "建筑高度76.4米", "广东省首批装配式建筑示范项目"] },
+            { name: "上海力波啤酒厂转型项目（一期）", facts: ["建筑面积81000平方米", "装配式建筑落实比例100%", "单体装配率60%"] },
+            { name: "第三高科技预制学校", facts: ["建筑面积12319平方米", "48个班级", "2160个学位"] },
+          ].map((project) => (
+            <article class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-surface)] p-7">
+              <h3 class="text-xl font-extrabold">{project.name}</h3>
+              <ul class="mt-4 space-y-2 text-sm text-[var(--color-muted)]">{project.facts.map((fact) => <li>{fact}</li>)}</ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <ContactCta />
+</BaseLayout>

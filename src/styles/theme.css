@@ -1,0 +1,14 @@
+:root {
+  --color-ink: #0b1b2b;
+  --color-muted: #52616f;
+  --color-surface: #f5f7fa;
+  --color-card: #ffffff;
+  --color-line: #dce4ea;
+  --color-primary: #135faa;
+  --color-primary-dark: #0e3f72;
+  --color-accent: #2e9e6b;
+  --font-heading: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+  --font-body: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+  --shadow-card: 0 24px 60px rgba(11, 27, 43, 0.09);
+  --radius-card: 1.5rem;
+}

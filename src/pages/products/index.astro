@@ -1,0 +1,30 @@
+---
+import ProductCard from "../../components/product/ProductCard.astro";
+import Container from "../../components/ui/Container.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPublishedProducts } from "../../lib/products";
+import { makePageTitle } from "../../lib/seo";
+
+const products = await getPublishedProducts();
+---
+
+<BaseLayout
+  title={makePageTitle("业务体系")}
+  description="了解金鑫绿建的钢结构专业承包、装配式钢结构建筑总承包和金鑫乡墅产品，查看代表项目、关键参数与业务说明。"
+>
+  <section class="border-b border-[var(--color-line)] bg-white py-20 sm:py-28">
+    <Container>
+      <p class="eyebrow mb-5">业务体系</p>
+      <h1 class="max-w-5xl text-5xl font-extrabold leading-[1.05] sm:text-7xl">工程总承包能力与乡墅产品并行的业务结构。</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-[var(--color-muted)]">每个业务条目都保留稳定链接、公开图片、关键参数和可追溯的项目说明，便于快速评估合作方向。</p>
+    </Container>
+  </section>
+
+  <section class="py-24 sm:py-32">
+    <Container>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => <ProductCard product={product} />)}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

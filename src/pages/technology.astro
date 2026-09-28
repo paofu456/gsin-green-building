@@ -1,0 +1,68 @@
+---
+import ContactCta from "../components/sections/ContactCta.astro";
+import Container from "../components/ui/Container.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { makePageTitle } from "../lib/seo";
+---
+
+<BaseLayout
+  title={makePageTitle("技术研究")}
+  description="金鑫绿建围绕装配式钢结构轻板建筑开展技术研究，画册记载拥有73项知识产权，并形成两代装配式钢结构建筑成套技术体系。"
+>
+  <section class="border-b border-[var(--color-line)] bg-white py-20 sm:py-28">
+    <Container>
+      <p class="eyebrow mb-5">TECHNICAL STUDY</p>
+      <h1 class="max-w-5xl text-5xl font-extrabold leading-[1.05] sm:text-7xl">以技术体系支撑装配式钢结构建筑。</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-[var(--color-muted)]">公司围绕库马克大厦的工程实践总结技术成果，并联合高校和行业机构推进后续研究与应用。</p>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <Container class="grid gap-6 lg:grid-cols-3">
+      <article class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white p-8">
+        <p class="eyebrow">技术体系 1.0</p>
+        <h2 class="mt-4 text-2xl font-extrabold">装配式钢结构轻板建筑成套技术体系</h2>
+        <p class="mt-4 text-[var(--color-muted)]">画册记载该体系基于库马克大厦设计实施成果总结，2018年6月通过专家鉴定，结论为整体达到国内领先水平，具有较强推广价值。</p>
+      </article>
+      <article class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white p-8">
+        <p class="eyebrow">技术体系 2.0</p>
+        <h2 class="mt-4 text-2xl font-extrabold">GSIN装配式钢结构建筑成套技术研究与工程应用</h2>
+        <p class="mt-4 text-[var(--color-muted)]">画册记载该成果2021年12月通过国家级专家组鉴定，总体达到国际先进水平，其中两项连接节点与楼板连接技术达到国际领先水平。</p>
+      </article>
+      <article class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white p-8">
+        <p class="eyebrow">标准成果</p>
+        <h2 class="mt-4 text-2xl font-extrabold">参编行业规程</h2>
+        <p class="mt-4 text-[var(--color-muted)]">《蒸压轻质混凝土墙板安装技术规程》编号为T/CECS 1051-2022，画册记载2022年3月公布、2022年8月施行。</p>
+      </article>
+    </Container>
+  </section>
+
+  <section class="border-y border-[var(--color-line)] bg-white py-20 sm:py-28">
+    <Container>
+      <SectionHeading eyebrow="研发记录" title="知识产权与科技奖励。" description="以下数量和奖项均来自画册“科技创新丨科技成果”章节。" />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        {[
+          { label: "知识产权总数", value: "73项" },
+          { label: "发明专利", value: "7项" },
+          { label: "实用新型专利", value: "49项" },
+          { label: "软件著作权", value: "10项" },
+          { label: "注册商标", value: "7件" },
+        ].map((item) => (
+          <div class="rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6">
+            <p class="text-sm font-bold text-[var(--color-muted)]">{item.label}</p>
+            <p class="mt-3 text-3xl font-black text-[var(--color-primary)]">{item.value}</p>
+          </div>
+        ))}
+      </div>
+      <ul class="mt-10 grid gap-4 text-[var(--color-muted)] lg:grid-cols-2">
+        <li>住房和城乡建设部科技计划项目验收。</li>
+        <li>中国建筑金属结构协会科学技术二等奖。</li>
+        <li>2022及2023年度广东省钢结构科学技术奖一等奖。</li>
+        <li>技术体系列入2021年《深圳市建设工程新技术推广目录》。</li>
+      </ul>
+    </Container>
+  </section>
+
+  <ContactCta />
+</BaseLayout>
