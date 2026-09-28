@@ -19,6 +19,12 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  @media (min-width: 1024px) {
+    body.home {
+      scroll-snap-type: y proximity;
+    }
+  }
+
   h1,
   h2,
   h3 {
@@ -42,6 +48,26 @@
 }
 
 @layer components {
+  [data-hero-slide] {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease;
+  }
+
+  [data-hero-slide="active"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  [data-hero-dot] {
+    width: 0.5rem;
+  }
+
+  [data-hero-dot="active"] {
+    width: 2.25rem;
+    background-color: var(--color-accent);
+  }
+
   .eyebrow {
     color: var(--color-primary);
     font-size: 0.78rem;

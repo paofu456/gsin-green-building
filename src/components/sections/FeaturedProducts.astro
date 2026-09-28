@@ -1,25 +1,51 @@
 ---
-import { getPublishedProducts } from "../../lib/products";
-import ProductCard from "../product/ProductCard.astro";
 import Button from "../ui/Button.astro";
 import Container from "../ui/Container.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
+import { getPublishedProducts } from "../../lib/products";
 
 const products = (await getPublishedProducts()).filter((product) => product.data.featured).slice(0, 3);
 ---
 
-<section class="border-y border-[var(--color-line)] bg-white py-24 sm:py-32">
-  <Container>
-    <div class="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
+<section class="min-h-[calc(100vh-80px)] snap-start bg-[var(--color-surface)] py-20 sm:py-24">
+  <Container class="flex h-full flex-col">
+    <div class="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
       <SectionHeading
-        eyebrow="核心业务"
-        title="从工程承包到绿色乡墅产品。"
-        description="三条业务线分别呈现服务能力、代表项目、技术参数与适用场景，便于业主快速判断合作方向。"
+        eyebrow="业务板块"
+        title="三条业务线覆盖工程与产品。"
+        description="从专业承包到EPC总承包，再到标准化乡墅产品，形成可核验的业务结构。"
       />
-        <Button href="/products/" variant="secondary" class="shrink-0 border-transparent text-[var(--color-primary)] hover:border-[var(--color-primary)]">查看全部业务</Button>
+      <Button href="/products/" variant="custom" class="shrink-0 border border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white">
+        查看全部业务
+      </Button>
     </div>
-    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {products.map((product) => <ProductCard product={product} />)}
+
+    <div class="mt-12 grid flex-1 gap-6 lg:grid-cols-3">
+      {products.map((product) => {
+        const image = product.data.images[0];
+        return (
+          <a href={`/products/${product.data.slug}/`} class="group relative flex min-h-[460px] overflow-hidden rounded-[var(--radius-card)] bg-[var(--color-ink)] text-white">
+            <img
+              src={image.src}
+              alt={image.alt}
+              width="800"
+              height="620"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover opacity-72 transition duration-700 group-hover:scale-105 group-hover:opacity-85"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#04121d]/90 via-[#04121d]/28 to-transparent" aria-hidden="true"></div>
+            <div class="relative mt-auto w-full p-8">
+              <span aria-hidden="true" class="text-3xl font-black text-[var(--color-accent)]">+</span>
+              <h3 class="mt-4 text-2xl font-black leading-snug xl:text-3xl">{product.data.title}</h3>
+              <p class="mt-4 line-clamp-3 text-sm leading-7 text-white/75">{product.data.summary}</p>
+              <span class="mt-6 inline-flex items-center gap-2 text-sm font-extrabold text-white">
+                查看详情
+                <span aria-hidden="true" class="transition group-hover:translate-x-1">→</span>
+              </span>
+            </div>
+          </a>
+        );
+      })}
     </div>
   </Container>
 </section>

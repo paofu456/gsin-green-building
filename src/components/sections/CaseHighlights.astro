@@ -1,0 +1,61 @@
+---
+import Button from "../ui/Button.astro";
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="min-h-[calc(100vh-80px)] snap-start bg-white py-20 sm:py-24">
+  <Container class="flex h-full flex-col">
+    <SectionHeading
+      eyebrow="项目案例"
+      title="代表性工程覆盖不同建造场景。"
+      description="以下案例来自公司画册，覆盖超高层钢结构、装配式住宅和公共配套设施。"
+    />
+
+    <div class="mt-12 grid flex-1 gap-6 lg:grid-cols-[1.05fr_.95fr]">
+      <article class="group relative overflow-hidden rounded-[var(--radius-card)] bg-[var(--color-ink)] text-white">
+        <img src="/media/projects/bay-park-center.jpg" alt="深湾汇云中心项目鸟瞰图" width="1466" height="986" loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#04121d]/92 via-[#04121d]/30 to-transparent" aria-hidden="true"></div>
+        <div class="relative mt-auto flex h-full min-h-[520px] flex-col justify-end p-8 lg:p-10">
+          <p class="text-sm font-bold text-[var(--color-accent)]">中国深圳 · 超高层</p>
+          <h3 class="mt-4 text-3xl font-black xl:text-4xl">深湾汇云中心</h3>
+          <p class="mt-5 max-w-2xl text-white/75">画册记载建筑面积208028平方米，建筑高度358.7米，用钢量39548吨，获得2021年度中国建筑钢结构金奖。</p>
+        </div>
+      </article>
+
+      <div class="grid gap-6">
+        {[
+          {
+            title: "上海力波啤酒厂转型项目（一期）",
+            meta: "装配式建筑 · 中国上海",
+            facts: ["建筑面积81000平方米", "装配式建筑落实比例100%", "单体装配率60%"],
+          },
+          {
+            title: "第三高科技预制学校",
+            meta: "公共设施 · 中国深圳",
+            facts: ["建筑面积12319平方米", "48个班级", "2160个学位"],
+          },
+          {
+            title: "库马克大厦",
+            meta: "EPC总承包 · 中国深圳",
+            facts: ["建筑面积38697平方米", "建筑高度76.4米", "广东省首批装配式建筑示范项目"],
+          },
+        ].map((project) => (
+          <article class="flex flex-1 flex-col justify-center rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-surface)] p-8">
+            <p class="text-sm font-bold text-[var(--color-muted)]">{project.meta}</p>
+            <h3 class="mt-3 text-xl font-black text-[var(--color-ink)] xl:text-2xl">{project.title}</h3>
+            <ul class="mt-4 space-y-2 text-sm text-[var(--color-muted)]">
+              {project.facts.map((fact) => <li>{fact}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-10 flex justify-center">
+      <Button href="/projects/" variant="custom" class="border border-[var(--color-ink)] text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-white">
+        查看更多案例
+      </Button>
+    </div>
+  </Container>
+</section>
